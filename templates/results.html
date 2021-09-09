@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results Page</title>
+    <style>
+        body{
+        background-color:gray;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center" style="color:yellow">SHOWING RESULTS FOR "{{ mobile_name }}"</h1>
+    {% if data is iterable %}
+    <table border="2px solid black" bgcolor="powderblue">
+        <thead>
+            <tr>
+                <th>Mobile Image</th>
+                <th>Basic Info</th>
+                <th>Rating Details</th>
+                <th>Total Reviews</th>
+                <th>Product Features</th>
+                <th>Product Offers</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in data %}
+                <tr>
+                    {% for key,value in result.items() %}
+                        {% if key in ["image"] %}
+                            <td width = 15%>
+                                <img src={{ value }} alt="mobile image">
+                            </td>
+                        {% elif key in ["rating_details","total_reviews_costs","basic_info"] %}
+                            <td width = 12%>
+                                {% for inner_key,inner_value in value.items() %}
+                                    {{inner_key}} : {{inner_value }}<br><br>
+                                {% endfor %}
+                            </td>
+                        {% else %}
+                            <td width = 25%>
+                                {% for inner_key,inner_value in value.items() %}
+                                    {{inner_key}} : {{inner_value }}<br><br>
+                                {% endfor %}
+                        </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        {{ data }}
+    {% endif %}
+</body>
+</html>

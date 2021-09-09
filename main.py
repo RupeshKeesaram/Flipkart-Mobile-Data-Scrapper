@@ -3,7 +3,7 @@ import requests
 import lxml
 
 
-def web_scrapper(mobile_name, count):
+def web_scrapper(mobile_name,count):
     '''
 
     :param mobile_name:
@@ -69,6 +69,7 @@ def web_scrapper(mobile_name, count):
                 offers_class = "_16eBzU col"
                 review_class = "_2-N8zT"
                 reviewed_cust_name_class = "_2sc7ZR _2V5EHH"
+                image_class = "CXW8mj _3nMexc"
 
                 try:
                     product_name = prod_names[0].text.split("(")[0]
@@ -82,6 +83,9 @@ def web_scrapper(mobile_name, count):
                     offer_detail_responses = prod_soup.findAll("li", class_=offers_class)
                     product_review_responses = prod_soup.findAll("p", class_=review_class, limit=3)
                     product_cust_name_responses = prod_soup.findAll("p", class_=reviewed_cust_name_class, limit=3)
+
+                    # collecting image source link and deleting content after ? in link
+                    mobile_image=prod_soup.find("div",class_=image_class).find("img")["src"].split("?")[0]
 
                 except:
                     return "Error occured while scrapping mobile features, pls tryout with another mobile name"
@@ -164,6 +168,7 @@ def web_scrapper(mobile_name, count):
                 """
 
                 results = {
+                    "image":mobile_image,
                     "basic_info": {"Name": product_name, "Cost": product_cost,
                                    "Rating": product_rating},
                     "rating_details": dict(zip(product_part_names, product_parts_rating)),
@@ -171,7 +176,7 @@ def web_scrapper(mobile_name, count):
                                             "Total_Reviews": product_total_reviews},
                     "product_features": dict(zip([i for i in range(1, len(product_features) + 1)], product_features)),
                     "product_offers": dict(zip([i for i in range(1, len(product_offers) + 1)], product_offers)),
-                    "product_reviews": dict(zip(product_review_cust_name, product_reviews)),
+                    # "product_reviews": dict(zip(product_review_cust_name, product_reviews)),
                 }
                 mobile_details.append(results)
         else:
@@ -179,6 +184,4 @@ def web_scrapper(mobile_name, count):
         return mobile_details
     except Exception as e:
         return "Looks like something went wrong " + e
-
-
 

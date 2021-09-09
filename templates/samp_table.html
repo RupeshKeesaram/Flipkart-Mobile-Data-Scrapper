@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results Page</title>
+    <style>
+        body{
+        background-color:gray;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center" style="color:yellow">SHOWING RESULTS FOR "{{ mobile_name }}"</h1>
+    {% if data is iterable %}
+    <table border="2px solid black" bgcolor="powderblue">
+        <thead>
+            <tr>
+                <th>Mobile Image</th>
+                <th>Basic Info</th>
+                <th>Rating Details</th>
+                <th>Total Reviews</th>
+                <th>Product Features</th>
+                <th>Product Offers</th>
+                <th>Product Reviews</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in data %}
+                <tr>
+                    {% for key,value in result.items() %}
+                        {% if key in ["image"] %}
+                            <img src={{value}}>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        {{ Rupee }}
+    {% endif %}
+</body>
+</html>
