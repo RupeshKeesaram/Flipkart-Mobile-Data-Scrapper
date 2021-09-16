@@ -1,43 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Results Page</title>
-    <style>
-        body{
-        background-color:gray;
-        }
-    </style>
-</head>
-<body>
-    <h1 align="center" style="color:yellow">SHOWING RESULTS FOR "{{ mobile_name }}"</h1>
-    {% if data is iterable %}
-    <table border="2px solid black" bgcolor="powderblue">
-        <thead>
-            <tr>
-                <th>Mobile Image</th>
-                <th>Basic Info</th>
-                <th>Rating Details</th>
-                <th>Total Reviews</th>
-                <th>Product Features</th>
-                <th>Product Offers</th>
-                <th>Product Reviews</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for result in data %}
-                <tr>
-                    {% for key,value in result.items() %}
-                        {% if key in ["image"] %}
-                            <img src={{value}}>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-        {{ Rupee }}
-    {% endif %}
-</body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+  <h1>Hello Rupesh</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
 </html>
