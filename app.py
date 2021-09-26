@@ -11,12 +11,17 @@ app.secret_key ="Rupee"
 
 
 
-@app.route("/")
+@app.route("/",methods=["POST","GET"])
 @cross_origin()
 def home():
-    data= web_scrapper("poco m2 pro",4)
-    return render_template("results.html",data=data,mobile_name="POCO M2 PRO")
-    # return render_template("Main.html")
+    return render_template("Main.html")
 
+@app.route("/fetch", methods=["POST","GET"])
+def fetch():
+    samp_dict=request.form
+    name = samp_dict['m_name']
+    count=int(samp_dict["count"])
+    data= web_scrapper(name,count)
+    return render_template("results.html",data=data,mobile_name=name)
 
 app.run(debug = True)

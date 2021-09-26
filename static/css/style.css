@@ -1,0 +1,64 @@
+body
+{
+    background-color:#678786;
+}
+
+/* flipkart image */
+.nav
+{
+margin-left:35%;
+margin-top:25px;
+}
+
+/* form data */
+.form
+{
+margin-top:100px;
+text-align:center;
+}
+
+
+/* mobile_name */
+#m_name{
+    border-radius:10px;
+    width:300px;
+    transition:width 2s;
+}
+
+#m_name:hover
+{
+    width: 600px;
+}
+
+
+/* count */
+#count{
+    border-radius:10px;
+    width:300px;
+   transition:width 2s;
+}
+
+#count:hover
+{
+    width: 600px;
+}
+
+
+/* submit */
+
+#submit
+{
+    margin-left:50px;
+    width:100px;
+    height:50px;
+    text-transform: uppercase;
+    font-size:20px;
+    border:2px solid pink;
+    border-radius:10px;
+}
+
+#submit:hover
+{
+    background-color:#eb0e28;
+    widith:75px;
+}

@@ -42,17 +42,18 @@ def web_scrapper(mobile_name,count):
                 if cost > 8000:
                     product_links.append(base_url + a_tag["href"])
 
+
             # selecting only top 5 mobiles
             product_links = product_links[:count]
             mobile_details = []
 
-            for link in product_links:
+            for i in range(count):
 
                 # printing mobile links
                 # print("Product Link: ", link)
 
                 try:
-                    prod_results = requests.get(link)
+                    prod_results = requests.get(product_links[i])
                     prod_content = prod_results.text
                     prod_soup = bs(prod_content, "lxml")
                 except:
@@ -72,7 +73,8 @@ def web_scrapper(mobile_name,count):
                 image_class = "CXW8mj _3nMexc"
 
                 try:
-                    product_name = prod_names[0].text.split("(")[0]
+                    product_name= prod_names[i].text.split("(")[0]
+                    prod_color= prod_names[i].text.split("(")[-1].split(",")[0].split()[-1]
                     feature_responses = prod_soup.findAll("li", class_=features_class)
                     product_cost = prod_soup.find("div", class_=cost_class).text
                     product_rating = prod_soup.find("div", class_=rating_class).text
@@ -168,7 +170,7 @@ def web_scrapper(mobile_name,count):
                 """
 
                 results = {
-                    "image":mobile_image,
+                    "image":[mobile_image,prod_color],
                     "basic_info": {"Name": product_name, "Cost": product_cost,
                                    "Rating": product_rating},
                     "rating_details": dict(zip(product_part_names, product_parts_rating)),

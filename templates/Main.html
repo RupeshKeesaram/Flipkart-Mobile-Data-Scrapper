@@ -1,7 +1,19 @@
-{% extends "layout.html" %}
-{% block container %}
-   <form class="navbar-form navbar-left">
-      <input type="text" class="form-control col-lg-8" placeholder="Search">
-       <button type="button" class="btn btn-warning">SUBMIT</button>
-    </form>
-{% endblock container %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout Page</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="nav">
+        <img src="static/css/flipkart_nav.png" alt="flipkart image">
+    </div><br>
+    <div class="form">
+    <form action="fetch" method="POST" name="form">
+        <strong>MOBILE NAME : </strong><input id ="m_name" type="text" name="m_name" required><br><br><br>
+        <strong>REVIEWS COUNT : </strong><input id="count" type="number" min="1" max="10" name="count" required><br><br><br>
+        <input id="submit" type="submit" name="submit">
+    </form></div>
+</body>
+</html>

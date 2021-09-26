@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-    <h1 align="center" style="color:yellow">SHOWING RESULTS FOR "{{ mobile_name }}"</h1>
+    <h1 align="center" style="color:yellow">SHOWING RESULTS FOR "{{ mobile_name.upper() }}"</h1>
     {% if data is iterable %}
     <table border="2px solid black" bgcolor="powderblue">
         <thead>
@@ -29,7 +29,8 @@
                     {% for key,value in result.items() %}
                         {% if key in ["image"] %}
                             <td width = 15%>
-                                <img src={{ value }} alt="mobile image">
+                                <img src={{ value[0] }} alt="mobile image">
+                                <h3 style="text-align:center"> {{ value[1].upper() }}</h3>
                             </td>
                         {% elif key in ["rating_details","total_reviews_costs","basic_info"] %}
                             <td width = 12%>
