@@ -11,12 +11,13 @@ app.secret_key ="Rupee"
 
 
 
-@app.route("/",methods=["POST","GET"])
+@app.route("/")
 @cross_origin()
 def home():
     return render_template("Main.html")
 
 @app.route("/fetch", methods=["POST","GET"])
+@cross_origin()
 def fetch():
     samp_dict=request.form
     name = samp_dict['m_name']
