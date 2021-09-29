@@ -135,7 +135,6 @@ pycurl==7.43.0.5
 pydot==1.4.2
 pydotplus==2.0.2
 pyflakes==2.2.0
-pygame==1.9.6
 PyGetWindow==0.0.9
 Pygments==2.6.1
 pymango==0.1.1
