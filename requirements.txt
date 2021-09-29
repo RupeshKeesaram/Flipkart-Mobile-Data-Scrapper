@@ -174,7 +174,6 @@ scikit-surprise==1.1.1
 seaborn==0.10.1
 Send2Trash==1.5.0
 simplegeneric==0.8.1
-sip==4.19.13
 six==1.15.0
 snowballstemmer==2.0.0
 sortedcollections==1.2.1
