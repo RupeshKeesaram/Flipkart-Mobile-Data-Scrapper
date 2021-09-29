@@ -140,7 +140,6 @@ Pygments==2.6.1
 pymango==0.1.1
 pymongo==3.11.4
 PyMsgBox==1.0.9
-pyodbc===4.0.0-unsupported
 pyparsing==2.4.7
 PyPDF2==1.26.0
 pyperclip==1.8.1
